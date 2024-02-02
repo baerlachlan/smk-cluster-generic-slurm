@@ -1,0 +1,26 @@
+executor: cluster-generic
+cluster-generic-submit-cmd:
+  mkdir -p logs/{rule} &&
+  sbatch
+    --account=biosci
+    --partition=batch
+    --nodes=1
+    --cpus-per-task={threads}
+    --mem={resources.mem_mb}M
+    --time={resources.runtime}
+    --job-name={rule}-{wildcards}
+    --output=logs/{rule}/%j-{wildcards}.log
+    --parsable
+cluster-generic-status-cmd: status-sacct.sh
+cluster-generic-cancel-cmd: scancel
+jobs: 100
+max-jobs-per-second: 2
+max-status-checks-per-second: 5
+local-cores: 1
+software-deployment-method: conda
+latency-wait: 60
+rerun-incomplete: True
+printshellcmds: True
+scheduler: greedy
+notemp: False  # True will ignore files marked with temp(), therefore keeping them
+wrapper-prefix: file:///hpcfs/users/a1647910/snakemake-wrappers/  # Prefix to local storage of wrappers for running on compute nodes with no internet
