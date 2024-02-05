@@ -2,7 +2,7 @@
 
 My personal config for slurm execution of snakemake workflows.
 
-Requires minumum Snakemake version 8.
+Requires minimum Snakemake version 8.
 
 This setup originated from John Blischak's [smk-simple-slurm](https://github.com/jdblischak/smk-simple-slurm), but has been modified over several years and Snakemake versions.
 
@@ -30,7 +30,7 @@ snakemake --profile smk-profile-slurm
 
 Optionally, set the default profile in your `~/.bashrc` and omit the `--profile` argument:
 
-```
+```bash
 echo "export SNAKEMAKE_PROFILE=smk-profile-slurm" >> ~/.bashrc
 snakemake
 ```
