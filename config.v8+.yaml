@@ -3,7 +3,7 @@ cluster-generic-submit-cmd:
   mkdir -p logs/{rule} &&
   sbatch
     --account=biosci
-    --partition=icelake,skylake
+    --partition=icelake
     --nodes=1
     --cpus-per-task={threads}
     --mem={resources.mem_mb}M
