@@ -11,6 +11,7 @@ cluster-generic-submit-cmd:
     --job-name={rule}-{wildcards}
     --output=logs/{rule}/%j-{wildcards}.log
     --parsable
+    {resources.slurm_extra}
 cluster-generic-status-cmd: status-sacct.sh
 cluster-generic-cancel-cmd: scancel
 jobs: 100
@@ -24,3 +25,5 @@ printshellcmds: True
 scheduler: greedy
 notemp: False  # True will ignore files marked with temp(), therefore keeping them
 wrapper-prefix: file:///hpcfs/users/a1647910/snakemake-wrappers/  # Prefix to local storage of wrappers for running on compute nodes with no internet
+default-resources:
+  - slurm_extra=""
