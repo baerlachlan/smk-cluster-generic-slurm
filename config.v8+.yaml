@@ -16,7 +16,7 @@ cluster-generic-status-cmd: status-sacct.sh
 cluster-generic-cancel-cmd: scancel
 jobs: 100
 max-jobs-per-second: 2
-max-status-checks-per-second: 5
+max-status-checks-per-second: 1
 local-cores: 1
 software-deployment-method: conda
 latency-wait: 60

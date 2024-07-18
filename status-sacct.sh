@@ -32,6 +32,18 @@ function retry {
   done
 }
 
+user_sumbitted=`retry sacct -j "$jobid" --format user --noheader | head -n 1 | awk '{print $1}'`
+
+## When slurm job IDs are reset, some job numbers may be duplicated in the
+## accounting log file but refer to different jobs. If database is slow to
+## update the previous job may incorrectly be returned as completed. Check the
+## user and if it hasnt updated return running
+if [[ "$user_sumbitted" != "$USER" ]]
+then
+  echo running
+  exit 0
+fi
+
 output=`retry sacct -j "$jobid" --format State --noheader | head -n 1 | awk '{print $1}'`
 
 if [[ $output =~ ^(COMPLETED).* ]]
