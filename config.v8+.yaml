@@ -19,6 +19,7 @@ max-jobs-per-second: 2
 max-status-checks-per-second: 1
 local-cores: 1
 software-deployment-method: conda
+use-conda: True
 latency-wait: 60
 rerun-incomplete: True
 printshellcmds: True
