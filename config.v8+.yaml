@@ -6,7 +6,7 @@ cluster-generic-submit-cmd:
     --partition=icelake
     --nodes=1
     --cpus-per-task={threads}
-    --mem={resources.mem_mb}M
+    --mem={resources.mem}
     --time={resources.runtime}
     --job-name={rule}-{wildcards}
     --output=logs/{rule}/%j-{wildcards}.log
@@ -24,6 +24,6 @@ rerun-incomplete: True
 printshellcmds: True
 scheduler: greedy
 notemp: False  # True will ignore files marked with temp(), therefore keeping them
-wrapper-prefix: file:///hpcfs/users/a1647910/snakemake-wrappers/  # Prefix to local storage of wrappers for running on compute nodes with no internet
+wrapper-prefix: file:///scratchdata1/users/a1647910/snakemake-wrappers/  # Prefix to local storage of wrappers for running on compute nodes with no internet
 default-resources:
   - slurm_extra=""
